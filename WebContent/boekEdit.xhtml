@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Titel Toevoegen</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h:body styleClass="bodiody">
+		<h:form id="form">
+			<h:outputLabel value="Toevoegen nieuwe titel" styleClass="kop" />
+			<h:panelGrid columns="2" rows="8">
+				<h:panelGroup>
+					<h:outputLabel value="Boeknummer" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.boek.boekNummer}"
+						disabled="true" size="50" maxlength="30" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Titel" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.boek.titel}" size="50"
+						maxlength="50" required="#{not empty param['form:opslaan']}" requiredMessage="Vul titel in" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Auteur" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.boek.auteur}" size="50"
+						maxlength="30" required="#{not empty param['form:opslaan']}" requiredMessage="Vul auteur in" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Uitgeverij" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.boek.uitgeverij}" size="50"
+						maxlength="30" required="#{not empty param['form:opslaan']}" requiredMessage="Vul uitgeverij in" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Categorie" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:selectOneMenu value="#{boekEditBean.boek.categorie}" converter="categorieConverter">
+						<f:selectItem value="#{null}" itemLabel="" />
+						<f:selectItems value="#{boekEditBean.categorieen}" var="cat" itemValue="#{cat}" />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="ISBN" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.boek.isbn}" size="50"
+						maxlength="30" required="#{not empty param['form:opslaan']}" requiredMessage="Vul ISBN in" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Locatie" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.boek.locatie}" size="50"
+						maxlength="30" required="#{not empty param['form:opslaan']}" requiredMessage="Vul locatie in" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Aantal exemplaren" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{boekEditBean.aantal}" required="#{not empty param['form:opslaan']}" requiredMessage="Vul aantal in" size="50" maxlength="30" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<div></div>
+			<h:messages />
+			<p />
+		<h:panelGrid columns="2">
+		<h:panelGroup>
+		<h:commandButton id="opslaan" action="#{boekEditBean.opslaan()}" value="Opslaan" styleClass="knop" />
+		</h:panelGroup>
+		<h:panelGroup>
+		<h:commandButton id="annuleren" action="#{boekEditBean.annuleren()}" value="Annuleren" styleClass="knop" />
+		</h:panelGroup>
+		</h:panelGrid>
+		</h:form>
+	</h:body>
+</body>
+</html>

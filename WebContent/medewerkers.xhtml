@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Medewerkers</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h:body styleClass="bodiody">
+		<h:form>
+			<h:outputLabel value="Medewerkers" styleClass="kop" />
+			<p />
+					<div
+						style="width: 270px; height: auto; display: inlineblock; overflow-x: auto; overflow-y: auto;">
+						<h:dataTable value="#{medewerkersBean.medewerkers}" var="item"
+							style="width: 100%; height: 100%;" headerClass = "tableHeader" styleClass="table"
+							rowClasses="tableRow, tableRowAlt">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Naam" />
+								</f:facet>
+								<h:commandLink value="#{item.naam}" styleClass="rowSelect"
+									action="#{medewerkersBean.setGeselecteerdeMedewerker(item)}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Email" />
+								</f:facet>
+								<h:commandLink value="#{item.email}" styleClass="rowSelect"
+									action="#{medewerkersBean.setGeselecteerdeMedewerker(item)}" />
+							</h:column>
+						</h:dataTable>
+					</div>
+					<br/>
+					<h:commandButton action="#{medewerkersBean.toonBoeken()}" disabled="#{empty medewerkersBean.geselecteerdeMedewerker}" value="Toon Boeken" styleClass="knop2" />
+					<p:spacer width="60" height="10" />
+					<h:commandButton action="#{medewerkersBean.wijzigen()}" disabled="#{empty medewerkersBean.geselecteerdeMedewerker}" value="Medewerker wijzigen" styleClass="knop2" />
+					<h:commandButton action="#{medewerkersBean.toevoegen()}" value="Medewerker toevoegen" styleClass="knop2" />
+					<br/>
+			<h:commandButton action="#{medewerkersBean.terug()}" value="Terug" styleClass="knop" />
+			<h:messages/>
+			<p/>
+			<h:outputLabel
+				value="Geselecteerd: 
+#{medewerkersBean.geselecteerdeMedewerker.naam}"
+				rendered="#{not empty
+medewerkersBean.geselecteerdeMedewerker}" />
+		</h:form>
+	</h:body>
+</body>
+</html>

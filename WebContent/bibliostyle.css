@@ -1,0 +1,79 @@
+@CHARSET "ISO-8859-1";
+
+.kop {
+	font-family: Impact;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.kop2 {
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+.label {
+	font-family: Helvetica;
+	font-size: 15px;
+}
+
+.bodiody {
+	background: #4fb4b1;
+}
+
+.tableRow {
+	background: none repeat scroll 0 0 #818181;
+	color: #808080;
+	border-top: 1px solid #BBBBBB;
+	height: 30px;
+	font-size: 12px;
+	font-family: Candara, sans-serif;
+}
+
+.tableRowAlt {
+	background: none repeat scroll 0 0 #3a3a3a;
+	color: #808080;
+	border-top: 1px solid #BBBBBB;
+	height: 30px;
+	font-size: 12px;
+	font-family: Candara, sans-serif;
+}
+
+.table {
+	background: white;
+	color: #fff;
+	table-layout: auto;
+	border-collapse: collapse;
+	/*width:100%;*/
+}
+
+.column {
+	width: auto;
+}
+
+.tableHeader {
+	text-align: center;
+	background: none repeat scroll 0 0 #303030;
+	border-bottom: 1px solid #BBBBBB;
+}
+
+.knop {
+	width: 100px;
+}
+
+.knop2 {
+	width: 165px;
+}
+
+.knoppenOnder td {
+	vertical-align: bottom;
+}
+
+.rowSelect {
+	display: block;
+	padding: 5px 10px 2px 10px;
+	text-decoration: none;
+	color: #fff;
+	width: 100%;
+	height: auto;
+	min-height: 10px;
+}

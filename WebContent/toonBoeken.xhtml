@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Toon Boeken</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h:body styleClass="bodiody">
+		<h:form>
+			<h:outputLabel value="Boeken in bezit van medewerker" styleClass="kop" />
+			<p />
+			<h:panelGrid columns="2" styleClass="knoppenOnder">
+				<h:panelGroup>
+					<h:outputLabel value="Gebruikersnaam" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Naam" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Email" styleClass="label" />
+					<br/>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{toonBoekenBean.gebruikersNaam}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{toonBoekenBean.medewerker.naam}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{toonBoekenBean.medewerker.email}" styleClass="label" />
+					<br/>
+				</h:panelGroup>
+			</h:panelGrid>
+					<div
+						style="width: auto; height: auto; display: inlineblock; overflow-x: auto; overflow-y: auto; background-color: #9999ff">
+						<h:dataTable value="#{toonBoekenBean.medewerker.boeken}" var="item"
+							style="width: 100%; height: 100%;" headerClass = "tableHeader" styleClass="table"
+							rowClasses="tableRow, tableRowAlt">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Boeknummer" />
+								</f:facet>
+								<h:commandLink value="#{item.boekNummer}" styleClass="rowSelect"
+									action="#{toonBoekenBean.setGeselecteerdeBoek(item)}"  />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="BoekVolgnummer" />
+								</f:facet>
+								<h:commandLink styleClass="rowSelect"
+									action="#{toonBoekenBean.setGeselecteerdeBoek(item)}">
+									<h:outputLabel  value="#{item.boekVolg}"> 
+									<f:convertNumber integerOnly="true" minIntegerDigits="3"/>
+									</h:outputLabel>
+									</h:commandLink> 
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Titel" />
+								</f:facet>
+								<h:commandLink value="#{item.titel}"
+									action="#{toonBoekenBean.setGeselecteerdeBoek(item)}" styleClass="rowSelect" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="DatumUitleen" />
+								</f:facet>
+								<h:commandLink action="#{toonBoekenBean.setGeselecteerdeBoek(item)}" styleClass="rowSelect">
+									<h:outputLabel value="#{item.datumUitleen}">
+									<f:convertDateTime dateStyle="medium" locale="nl_nl"/>
+									</h:outputLabel>
+									</h:commandLink>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="DatumInleveren" />
+								</f:facet>
+								<h:commandLink styleClass="rowSelect"
+									action="#{toonBoekenBean.setGeselecteerdeBoek(item)}">
+									<h:outputLabel value="#{item.datumInleveren}">
+									<f:convertDateTime dateStyle="medium" locale="nl_nl"/>
+									</h:outputLabel>
+									</h:commandLink>
+							</h:column>
+						</h:dataTable>
+					</div>
+			<h:commandButton action="#{toonBoekenBean.innemen()}" disabled="#{((empty toonBoekenBean.geselecteerdeBoek) or (toonBoekenBean.geselecteerdeBoek.ingeleverd))}" value="Boek Innemen" styleClass="knop2" />
+			<h:commandButton action="#{toonBoekenBean.terugdraaien()}" disabled="#{((empty toonBoekenBean.geselecteerdeBoek) or (not (toonBoekenBean.geselecteerdeBoek.ingeleverd)))}" value="Innemen Terugdraaien" styleClass="knop2" />
+			<h:messages/>
+			<p/>
+			<h:outputLabel
+				value="Geselecteerde Boek: #{toonBoekenBean.geselecteerdeBoek.titel} (Exemplaar: #{toonBoekenBean.geselecteerdeBoek.boekVolg})"
+				rendered="#{not empty toonBoekenBean.geselecteerdeBoek}" />
+				<br/>
+				<h:commandButton action="#{toonBoekenBean.terug()}" value="Terug" styleClass="knop" />
+		</h:form>
+	</h:body>
+</body>
+</html>

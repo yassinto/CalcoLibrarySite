@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Boek wijzigen</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h:body styleClass="bodiody">
+		<h:form id="form">
+			<h:outputLabel value="Boek Wijzigen" styleClass="kop" />
+			<h:panelGrid columns="2" row="8" styleClass="knoppenOnder">
+				<h:panelGroup>
+					<h:outputLabel value="Boeknummer" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{exemplaarEditBean.boek.boekNummer}"
+						disabled="true" size="10" maxlength="10" />
+					<h:outputLabel value="Exemplaar" styleClass="label" />
+					<h:inputText value="#{exemplaarEditBean.exemplaar.exemplaarVolg}"
+						disabled="true" size="10" maxlength="10" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Titel" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{exemplaarEditBean.boek.titel}"
+						disabled="#{not(exemplaarEditBean.alleBoeken)}" required="#{not empty param['form:opslaan']}"
+						requiredMessage="Vul titel in" size="50" maxlength="50" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Auteur" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{exemplaarEditBean.boek.auteur}"
+						disabled="#{not(exemplaarEditBean.alleBoeken)}" required="#{not empty param['form:opslaan']}"
+						requiredMessage="Vul auteur in" size="50" maxlength="50" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Uitgeverij" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{exemplaarEditBean.boek.uitgeverij}"
+						disabled="#{not(exemplaarEditBean.alleBoeken)}" required="#{not empty param['form:opslaan']}"
+						requiredMessage="Vul uitgeverij in" size="50" maxlength="50" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Categorie" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:selectOneMenu value="#{exemplaarEditBean.boek.categorie}"
+						converter="categorieConverter" 
+						disabled="#{not(exemplaarEditBean.alleBoeken)}"> 
+						<f:selectItems value="#{exemplaarEditBean.categorieen}" var="cat"
+							itemValue="#{cat}" />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="ISBN" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{exemplaarEditBean.boek.isbn}"
+						disabled="#{not(exemplaarEditBean.alleBoeken)}" required="#{not empty param['form:opslaan']}"
+						requiredMessage="Vul ISBN in" size="50"
+						maxlength="50" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Locatie" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText value="#{exemplaarEditBean.boek.locatie}"
+						disabled="#{not(exemplaarEditBean.alleBoeken)}" required="#{not empty param['form:opslaan']}"
+						requiredMessage="Vul locatie in" size="50"
+						maxlength="50" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Vermist" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:selectBooleanCheckbox
+						value="#{exemplaarEditBean.exemplaar.vermist}"
+						disabled="#{exemplaarEditBean.alleBoeken}" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<div></div>
+			<h:messages />
+			<p />
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:commandButton id="opslaan" action="#{exemplaarEditBean.opslaan()}"
+						value="Opslaan" styleClass="knop" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:commandButton id="annuleren" action="#{exemplaarEditBean.annuleren()}"
+						value="Annuleren" styleClass="knop" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</body>
+</html>

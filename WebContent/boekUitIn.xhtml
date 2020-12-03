@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Boek uitlenen/innemen</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h:body styleClass="bodiody">
+		<h:form>
+			<h:outputLabel value="Boek uitlenen/innemen" styleClass="kop" />
+			<p />
+			<h:panelGrid columns="3" styleClass="knoppenOnder">
+				<h:panelGroup>
+					<h:outputLabel value="Boeknummer" styleClass="label" />
+					<br />
+					<h:outputLabel value="Titel" styleClass="label" />
+					<br />
+					<h:outputLabel value="Auteur" styleClass="label" />
+					<br />
+					<h:outputLabel value="Uitgeverij" styleClass="label" />
+					<br />
+					<h:outputLabel value="Categorie" styleClass="label" />
+					<br />
+					<h:outputLabel value="ISBN" styleClass="label" />
+					<br />
+					<h:outputLabel value="Locatie" styleClass="label" />
+					<br />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{boekUitInBean.boek.boekNummer}"
+						styleClass="label" />
+					<br />
+					<h:outputLabel value="#{boekUitInBean.boek.titel}"
+						styleClass="label" />
+					<br />
+					<h:outputLabel value="#{boekUitInBean.boek.auteur}"
+						styleClass="label" />
+					<br />
+					<h:outputLabel value="#{boekUitInBean.boek.uitgeverij}"
+						styleClass="label" />
+					<br />
+					<h:outputLabel value="#{boekUitInBean.boek.categorie.omschrijving}"
+						styleClass="label" />
+					<br />
+					<h:outputLabel value="#{boekUitInBean.boek.isbn}"
+						styleClass="label" />
+					<br />
+					<h:outputLabel value="#{boekUitInBean.boek.locatie}"
+						styleClass="label" />
+					<br />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:commandButton action="#{boekUitInBean.wijzigen()}"
+						value="Wijzig" styleClass="knop" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:panelGrid columns="2" styleClass="knoppenOnder">
+				<h:panelGroup>
+					<div
+						style="width: 600px; height: auto; display: inlineblock; overflow-x: auto; overflow-y: auto; background-color: #9999ff">
+						<h:dataTable value="#{boekUitInBean.boek.exemplaren}" var="item"
+							style="width: 100%; height: 100%;"
+							 headerClass = "tableHeader" styleClass="table"
+							rowClasses="tableRow, tableRowAlt">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Exemplaar"/>
+								</f:facet>
+								<h:commandLink
+									action="#{boekUitInBean.setGeselecteerdeExemplaar(item)}" styleClass="rowSelect">
+									<h:outputLabel  value="#{item.exemplaarVolg}"> 
+									<f:convertNumber integerOnly="true" minIntegerDigits="3"/>
+									</h:outputLabel>
+									</h:commandLink>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Uitgeleend aan" />
+								</f:facet>
+								<h:commandLink value="#{item.huidigeUitlening.medewerker.naam}" styleClass="rowSelect"
+									action="#{boekUitInBean.setGeselecteerdeExemplaar(item)}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="DatumUitgeleen" />
+								</f:facet>
+								<h:commandLink value="#{item.huidigeUitlening.datumUitleen}" styleClass="rowSelect"
+									action="#{boekUitInBean.setGeselecteerdeExemplaar(item)}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Beschikbaar" />
+								</f:facet>
+								<h:commandLink
+									action="#{boekUitInBean.setGeselecteerdeExemplaar(item)}" styleClass="rowSelect">
+							   <h:selectBooleanCheckbox value="#{(not(item.uitgeleen)) and (not(item.vermist))}" disabled="true" />
+							   </h:commandLink>
+							</h:column>
+						</h:dataTable>
+					</div>
+					<br />
+					<br />
+					<br />
+					<h:commandButton action="#{boekUitInBean.annuleren()}"
+						value="Annuleren" styleClass="knop" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:commandButton action="#{boekUitInBean.innemen()}"
+						disabled="#{((empty boekUitInBean.geselecteerdeExemplaar) or (not (boekUitInBean.geselecteerdeExemplaar.uitgeleen)))}"
+						onclick="return confirm ('Weet u zeker dat u exemplaar #{boekUitInBean.geselecteerdeExemplaar.exemplaarVolg} van #{boekUitInBean.boek.titel} wilt innemen?')"
+						value="Innemen" styleClass="knop" />
+					<br />
+					<h:commandButton action="#{boekUitInBean.uitlenen()}"
+						disabled="#{((empty boekUitInBean.geselecteerdeExemplaar) or (boekUitInBean.geselecteerdeExemplaar.uitgeleen))}"
+						value="Uitlenen" styleClass="knop" />
+					<br />
+					<h:commandButton action="#{boekUitInBean.bewerken()}"
+						disabled="#{empty boekUitInBean.geselecteerdeExemplaar}"
+						value="Bewerken" styleClass="knop" />
+					<br />
+					<h:commandButton action="#{boekUitInBean.verwijder()}" disabled="#{empty boekUitInBean.geselecteerdeExemplaar}" 
+					onclick="return confirm ('Weet u zeker dat u exemplaar #{boekUitInBean.geselecteerdeExemplaar.exemplaarId} wilt verwijderen?')"
+					value="Verwijderen" styleClass="knop" />
+					<br />
+					<br />
+					<br />
+					<h:commandButton action="#{boekUitInBean.exemplaar()}"
+						value="Exemplaar Toevoegen" styleClass="knop2" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:messages />
+			<p />
+			<h:outputLabel
+				value="Geselecteerde Exemplaar: "
+				rendered="#{not empty boekUitInBean.geselecteerdeExemplaar}">
+				</h:outputLabel>
+				<h:outputLabel  value="#{boekUitInBean.geselecteerdeExemplaar.exemplaarVolg}" rendered="#{not empty boekUitInBean.geselecteerdeExemplaar}"> 
+									<f:convertNumber integerOnly="true" minIntegerDigits="3"/>
+									</h:outputLabel>
+		</h:form>
+	</h:body>
+</body>
+</html>

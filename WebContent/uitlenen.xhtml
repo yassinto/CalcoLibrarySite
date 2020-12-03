@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Boek uitlenen</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h:body styleClass="bodiody">
+		<h:form>
+			<h:outputLabel value="Boek uitlenen" styleClass="kop" />
+			<p />
+			<h:panelGrid columns="2" styleClass="knoppenOnder">
+				<h:panelGroup>
+					<h:outputLabel value="Boeknummer" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Titel" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Auteur" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Uitgeverij" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Categorie" styleClass="label" />
+					<br/>
+					<h:outputLabel value="ISBN" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Locatie" styleClass="label" />
+					<br/>
+					<h:outputLabel value="Exemplaar" styleClass="label" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="#{uitlenenBean.boek.boekNummer}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.boek.titel}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.boek.auteur}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.boek.uitgeverij}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.boek.categorie.omschrijving}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.boek.isbn}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.boek.locatie}" styleClass="label" />
+					<br/>
+					<h:outputLabel value="#{uitlenenBean.exemplaar.exemplaarVolg}" styleClass="label">
+					<f:convertNumber integerOnly="true" minIntegerDigits="3"/>
+					</h:outputLabel> 
+					<br/>
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:panelGrid columns="2" styleClass="knoppenOnder">
+				<h:panelGroup>
+					<div
+						style="width: 250px; height: auto; display: inlineblock; overflow-x: auto; overflow-y: auto;">
+						<h:dataTable value="#{uitlenenBean.medewerkers}" var="item"
+							style="width: 100%; height: 100%;" headerClass = "tableHeader" styleClass="table"
+							rowClasses="tableRow, tableRowAlt">
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Naam" />
+								</f:facet>
+								<h:commandLink value="#{item.naam}" styleClass="rowSelect"
+									action="#{uitlenenBean.setGeselecteerdeMedewerker(item)}" />
+							</h:column>
+						</h:dataTable>
+					</div>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:commandButton action="#{uitlenenBean.uitlenen()}" value="Uitlenen" styleClass="knop" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:commandButton action="#{uitlenenBean.annuleren()}" value="Annuleren" styleClass="knop" />
+			<h:messages/>
+			<p/>
+			<h:outputLabel
+				value="Geselecteerde Medewerker: #{uitlenenBean.geselecteerdeMedewerker.naam}"
+				rendered="#{not empty uitlenenBean.geselecteerdeMedewerker}" />
+		</h:form>
+	</h:body>
+</body>
+</html>

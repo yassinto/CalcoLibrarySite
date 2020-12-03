@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Boeken</title>
+<link href="bibliostyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h:body styleClass="bodiody">
+		<h:form>
+			<h:outputLabel value="Calco Bibliotheek" styleClass="kop" />
+			<h:panelGrid columns="4">
+			<h:panelGroup>
+			<h:outputLabel value="Zoekterm (deel van boeknummer, titel, auteur of ISBN)" styleClass="kop2" />
+			</h:panelGroup>
+			<h:inputText value="#{boekenBean.filter}" size="20" maxlength="15" />
+			<h:panelGroup>
+			<h:commandButton action="#{boekenBean.zoek()}" value="Zoek" styleClass="knop" />
+			</h:panelGroup>
+			<h:panelGroup>
+			<h:commandButton action="#{boekenBean.clear()}" value="Reset" styleClass="knop" />
+			</h:panelGroup>
+			</h:panelGrid>
+					<div
+						style="width: 900px; height: auto; max-height: 450px; display: inlineblock; overflow-y: auto; overflow-x: auto;">
+						<h:dataTable value="#{boekenBean.boeken}" var="item"
+							style="width:1000px; height: 100%;" headerClass = "tableHeader" styleClass="table"
+							rowClasses="tableRow, tableRowAlt" >
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Boeknummer" />
+								</f:facet>
+								<h:commandLink value="#{item.boekNummer}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Titel"/>
+								</f:facet>
+								<h:commandLink value="#{item.titel}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Auteur" />
+								</f:facet>
+								<h:commandLink value="#{item.auteur}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Uitgeverij" />
+								</f:facet>
+								<h:commandLink value="#{item.uitgeverij}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="ISBN" />
+								</f:facet>
+								<h:commandLink value="#{item.isbn}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Categorie"/>
+								</f:facet>
+								<h:commandLink value="#{item.categorie}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Locatie" />
+								</f:facet>
+								<h:commandLink value="#{item.locatie}" styleClass="rowSelect"
+									action="#{boekenBean.setGeselecteerdeBoek(item)}"/>
+							</h:column>
+						</h:dataTable>
+					</div>
+			<h:messages/>
+			<p/>
+			<h:outputLabel
+				value="Geselecteerd:
+#{boekenBean.geselecteerdeBoek.titel}"
+				rendered="#{not empty
+boekenBean.geselecteerdeBoek}" />
+<h:panelGrid columns="3" rows="2">
+<h:panelGroup><h:commandButton action="#{boekenBean.lenen()}" disabled="#{empty boekenBean.geselecteerdeBoek}" value="Uitlenen/Innemen" styleClass="knop2" /> </h:panelGroup>
+<h:panelGroup><h:commandButton action="#{boekenBean.exemplaarToevoegen()}" disabled="#{empty boekenBean.geselecteerdeBoek}" value="Exemplaar Toevoegen" styleClass="knop2" /></h:panelGroup>
+<h:panelGroup><h:commandButton action="#{boekenBean.titelToevoegen()}" value="Titel Toevoegen" styleClass="knop2" /></h:panelGroup>
+<h:panelGroup><h:commandButton action="#{boekenBean.categorie()}" value="Categoriën" styleClass="knop2" /></h:panelGroup>
+<h:panelGroup><h:commandButton action="#{boekenBean.overzicht()}" value="Overzicht" styleClass="knop2" /></h:panelGroup>
+<h:panelGroup><h:commandButton action="#{boekenBean.medewerkers()}" value="Medewerkers" styleClass="knop2" /></h:panelGroup>
+</h:panelGrid>
+		</h:form>
+	</h:body>
+</body>
+</html>

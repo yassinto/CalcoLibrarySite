@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#categorieen.xhtml" PATH="/categorieen.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#categorieen.xhtml:0" NAME="item"
+   PATH="/categorieen.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boek::#boeken.xhtml" NAME="output"
+    PATH="/boeken.xhtml" TARGET="rules:#boeken.xhtml" TITLE="boek" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="edit::#categorieEdit.xhtml" NAME="output1"
+    PATH="/categorieEdit.xhtml" TARGET="rules:#categorieEdit.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#categorieEdit.xhtml"
+  PATH="/categorieEdit.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#categorieEdit.xhtml:0" NAME="item"
+   PATH="/categorieEdit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="terug::#categorieen.xhtml" NAME="output"
+    PATH="/categorieen.xhtml" TARGET="rules:#categorieen.xhtml"
+    TITLE="terug" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#boeken.xhtml" PATH="/boeken.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#boeken.xhtml:0" NAME="item"
+   PATH="/boeken.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boek::#boeken.xhtml" NAME="output"
+    PATH="/boeken.xhtml" TARGET="rules:#boeken.xhtml" TITLE="boek" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="categorie::#categorieen.xhtml"
+    NAME="output1" PATH="/categorieen.xhtml"
+    TARGET="rules:#categorieen.xhtml" TITLE="categorie" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="titel::#boekEdit.xhtml" NAME="output2"
+    PATH="/boekEdit.xhtml" TARGET="rules:#boekEdit.xhtml" TITLE="titel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="exemplaar::#exemplaar.xhtml" NAME="output3"
+    PATH="/exemplaar.xhtml" TARGET="rules:#exemplaar.xhtml"
+    TITLE="exemplaar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="lenen::#boekUitIn.xhtml" NAME="output4"
+    PATH="/boekUitIn.xhtml" TARGET="rules:#boekUitIn.xhtml"
+    TITLE="lenen" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="medewerkers::#medewerkers.xhtml"
+    NAME="output5" PATH="/medewerkers.xhtml"
+    TARGET="rules:#medewerkers.xhtml" TITLE="medewerkers" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#boekEdit.xhtml" PATH="/boekEdit.xhtml"
+  SHAPE="288,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#boekEdit.xhtml:0" NAME="item"
+   PATH="/boekEdit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boek::#boeken.xhtml" NAME="output"
+    PATH="/boeken.xhtml" TARGET="rules:#boeken.xhtml" TITLE="boek" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#exemplaar.xhtml" PATH="/exemplaar.xhtml"
+  SHAPE="320,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#exemplaar.xhtml:0" NAME="item"
+   PATH="/exemplaar.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boek::#boeken.xhtml" NAME="output"
+    PATH="/boeken.xhtml" TARGET="rules:#boeken.xhtml" TITLE="boek" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="uit::#boekUitIn.xhtml" NAME="output1"
+    PATH="/boekUitIn.xhtml" TARGET="rules:#boekUitIn.xhtml" TITLE="uit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#boekUitIn.xhtml" PATH="/boekUitIn.xhtml"
+  SHAPE="352,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#boekUitIn.xhtml:0" NAME="item"
+   PATH="/boekUitIn.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boek::#boeken.xhtml" NAME="output"
+    PATH="/boeken.xhtml" TARGET="rules:#boeken.xhtml" TITLE="boek" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="exemplaar::#exemplaar.xhtml" NAME="output1"
+    PATH="/exemplaar.xhtml" TARGET="rules:#exemplaar.xhtml"
+    TITLE="exemplaar" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="wijzigen::#exemplaarEdit.xhtml"
+    NAME="output2" PATH="/exemplaarEdit.xhtml"
+    TARGET="rules:#exemplaarEdit.xhtml" TITLE="wijzigen" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="uitlenen::#uitlenen.xhtml" NAME="output3"
+    PATH="/uitlenen.xhtml" TARGET="rules:#uitlenen.xhtml"
+    TITLE="uitlenen" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#exemplaarEdit.xhtml"
+  PATH="/exemplaarEdit.xhtml" SHAPE="608,513,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#exemplaarEdit.xhtml:0" NAME="item"
+   PATH="/exemplaarEdit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boekUitIn::#boekUitIn.xhtml" NAME="output"
+    PATH="/boekUitIn.xhtml" TARGET="rules:#boekUitIn.xhtml"
+    TITLE="boekUitIn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#uitlenen.xhtml" PATH="/uitlenen.xhtml"
+  SHAPE="624,513,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#uitlenen.xhtml:0" NAME="item"
+   PATH="/uitlenen.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="boekUitIn::#boekUitIn.xhtml" NAME="output"
+    PATH="/boekUitIn.xhtml" TARGET="rules:#boekUitIn.xhtml"
+    TITLE="boekUitIn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#medewerkers.xhtml" PATH="/medewerkers.xhtml"
+  SHAPE="32,833,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#medewerkers.xhtml:0" NAME="item"
+   PATH="/medewerkers.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="toon::#toonBoeken.xhtml" NAME="output"
+    PATH="/toonBoeken.xhtml" TARGET="rules:#toonBoeken.xhtml"
+    TITLE="toon" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="edit::#medewerkerEdit.xhtml" NAME="output1"
+    PATH="/medewerkerEdit.xhtml" TARGET="rules:#medewerkerEdit.xhtml"
+    TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="boeken::#boeken.xhtml" NAME="output2"
+    PATH="/boeken.xhtml" TARGET="rules:#boeken.xhtml" TITLE="boeken" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#toonBoeken.xhtml" PATH="/toonBoeken.xhtml"
+  SHAPE="240,849,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#toonBoeken.xhtml:0" NAME="item"
+   PATH="/toonBoeken.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="medewerkers::#medewerkers.xhtml"
+    NAME="output" PATH="/medewerkers.xhtml"
+    TARGET="rules:#medewerkers.xhtml" TITLE="medewerkers" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#medewerkerEdit.xhtml"
+  PATH="/medewerkerEdit.xhtml" SHAPE="256,1217,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#medewerkerEdit.xhtml:0" NAME="item"
+   PATH="/medewerkerEdit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="medewerkers::#medewerkers.xhtml"
+    NAME="output" PATH="/medewerkers.xhtml"
+    TARGET="rules:#medewerkers.xhtml" TITLE="medewerkers" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
